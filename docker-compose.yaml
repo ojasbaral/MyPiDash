@@ -1,0 +1,14 @@
+services:
+  server:
+    build:
+      args:
+      - NODE_ENV=development
+      context: server
+      target: development
+    command: npm run dev
+    enviroment:
+      - NODE_ENV=development
+    ports: 3000:3000
+
+    # FINISH UP SERVER W/ VOLUMES AND TRY A .ENV FILE INSTEAD
+    # WORK ON CLIENT AND DASHBOARD NEXT
