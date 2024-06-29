@@ -9,6 +9,22 @@ services:
     enviroment:
       - NODE_ENV=development
     ports: 3000:3000
-
+    volumes:
+      - ./server/src:/code/src
+      - ./server/package.json:/code/package.json
+      - ./server/package-lock.json:/code/package-lock.json
+      - /code/node_modules
+  client:
+    build:
+      context: client
+      target: development
+    ports:
+      - 3001:3001
+    volumes:
+      - ./client/src:/code/src
+      - /code/node_modules
+    depends_on:
+      - server
+  
     # FINISH UP SERVER W/ VOLUMES AND TRY A .ENV FILE INSTEAD
     # WORK ON CLIENT AND DASHBOARD NEXT
